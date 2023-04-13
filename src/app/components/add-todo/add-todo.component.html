@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmitForm()">
+  <div class="ui two row">
+    <div class="row">
+      <div class="ui input custom-class">
+        <input
+          type="text"
+          placeholder="Title..."
+          [(ngModel)]="title"
+          name="title"
+          id="title"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="ui input custom-class">
+        <input
+          type="text"
+          placeholder="Description..."
+          class="ui input"
+          [(ngModel)]="description"
+          name="description"
+          id="description"
+        />
+      </div>
+    </div>
+  </div>
+  <button class="ui button custom-class" type="submit">Add Todo</button>
+</form>

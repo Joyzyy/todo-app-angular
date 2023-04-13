@@ -1,0 +1,49 @@
+<div
+  class="ui raised very padded text container segment custom-class center-aligned"
+>
+  <h2 class="ui header center aligned">Todo App</h2>
+  <div class="ui top attached tabular menu">
+    <button
+      class="item"
+      [ngClass]="{ active: tabularMenuId === 0 }"
+      (click)="changeTabularMenuId(0)"
+    >
+      In progress
+    </button>
+    <button
+      class="item"
+      [ngClass]="{ active: tabularMenuId === 1 }"
+      (click)="changeTabularMenuId(1)"
+    >
+      Completed
+    </button>
+  </div>
+  <div
+    class="ui bottom attached tab segment"
+    [ngClass]="{ active: tabularMenuId === 0 }"
+  >
+    <!-- filter by not completed-->
+    <app-todo-list
+      *ngFor="let todo of todos | filterByCompleted : false"
+      [todo]="todo"
+      (deleteTodo)="deleteTodo(todo)"
+      (completeTodo)="completeTodo(todo)"
+      (editTodo)="editTodo(todo)"
+    ></app-todo-list>
+  </div>
+  <div
+    class="ui bottom attached tab segment"
+    [ngClass]="{ active: tabularMenuId === 1 }"
+  >
+    <app-todo-list
+      *ngFor="let todo of todos | filterByCompleted : true"
+      [todo]="todo"
+      (deleteTodo)="deleteTodo(todo)"
+      (completeTodo)="completeTodo(todo)"
+      (editTodo)="editTodo(todo)"
+    ></app-todo-list>
+  </div>
+  <div class="ui container center aligned custom-class">
+    <app-add-todo (addTodo)="addTodo($event)"></app-add-todo>
+  </div>
+</div>

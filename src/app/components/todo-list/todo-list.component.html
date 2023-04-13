@@ -1,0 +1,21 @@
+<div class="ui two column grid">
+  <div class="column">
+    <div class="ui segment">
+      <div class="ui transparent input">
+        <input type="text" [value]="todo.title" [(ngModel)]="todo.title" />
+      </div>
+      <br />
+      {{ todo.description }}
+    </div>
+  </div>
+  <div class="column">
+    <div class="ui segment center aligned">
+      <button class="ui button" (click)="onEdit()">Edit</button>
+      <button class="ui button" (click)="onDelete()">Delete</button>
+      <div *ngIf="!todo.completed" class="ui checkbox custom-class">
+        <input type="checkbox" name="completeTask" (change)="onChange()" />
+        <label>Complete</label>
+      </div>
+    </div>
+  </div>
+</div>
